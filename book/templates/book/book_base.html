@@ -37,13 +37,14 @@
           <div class="navbar-nav mr-auto">
             <a class="nav-item nav-link" href="{% url 'home' %}">Books</a>
             <a class="nav-item nav-link" href="{% url 'book-create' %}">Add Book Data</a>
+            <a class="nav-item nav-link" href="{% url 'chapter-create' %}">Add Chapter</a>
             <a class="nav-item nav-link" href="{% url 'blog-home' %}">Blog</a>
           </div>
           <!-- Navbar Right Side -->
           <div class="navbar-nav">
             {% if request.user.is_authenticated %}
             <div class="btn-group">
-                <a class="nav-item nav-link" href="{% url 'profile' %}" style="font-size: 16px;"><img src="{{user.profile.image.url}}" alt="" height="30px" width="30px" class="mr-2 rounded-circle">{{request.user.username}}</a>
+                <a class="nav-item nav-link" href="{% url 'profile' %}" style="font-size: 16px;"><img src="{{user.profile.image.url}}" alt="{{user.username}} pic" height="30"class="mr-2 rounded-circle">{{request.user.username}}</a>
                 <button type="button" class="btn btn-outline-light dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="sr-only">Toggle Dropdown</span>
                 </button>
@@ -67,8 +68,6 @@
     </nav>
   </header>
   <main role="main" class="container" >
-    <div class="row" >
-      <div class="col">
       {% if messages %}
         {% for message in messages %}
           <div class = "alert alert-{{ message.tags }}">{{ message }}</div>
@@ -76,8 +75,6 @@
       {% endif %}
         {% block content %}
         {% endblock content %}
-      </div>
-    </div>
   </main>
   <br><br><br>
   <!-- Optional JavaScript -->
